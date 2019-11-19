@@ -1,0 +1,36 @@
+{
+	"pages": [
+      {
+          "path": "pages/common/index",
+          "style": {}
+      },
+      {
+          "path": "pages/common/authorization",
+          "style": {}
+      }
+	],
+	"globalStyle": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "WeChat",
+		"navigationBarTextStyle": "black",
+		"enablePullDownRefresh": false,
+		"navigationStyle": "custom",
+		"usingComponents": {
+			"van-button": "./static/vant-weapp/dist/button/index",
+			"van-row": "./static/vant-weapp/dist/row/index",
+			"van-col": "./static/vant-weapp/dist/col/index",
+			"van-loading": "./static/vant-weapp/dist/loading/index",
+			"van-icon": "./static/vant-weapp/dist/icon/index",
+			"van-tabbar": "./static/vant-weapp/dist/tabbar/index",
+			"van-tabbar-item": "./static/vant-weapp/dist/tabbar-item/index",
+			"van-cell": "./static/vant-weapp/dist/cell/index",
+			"van-cell-group": "./static/vant-weapp/dist/cell-group/index",
+			"van-field": "./static/vant-weapp/dist/field/index",
+			"van-radio": "./static/vant-weapp/dist/radio/index",
+			"van-radio-group": "./static/vant-weapp/dist/radio-group/index",
+			"van-toast": "./static/vant-weapp/dist/toast/index",
+			"van-dialog": "./static/vant-weapp/dist/dialog/index"
+		}
+	}
+}
