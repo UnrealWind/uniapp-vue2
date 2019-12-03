@@ -4,10 +4,18 @@
           "path": "pages/common/index",
           "style": {}
       },
-      {
-          "path": "pages/common/authorization",
-          "style": {}
-      }
+		{
+			"path": "pages/common/shopCart",
+			"style": {}
+		},
+	  {
+		  "path": "pages/common/authorization",
+		  "style": {}
+	  },
+		{
+			"path": "pages/common/confirm_order",
+			"style": {}
+		}
 	],
 	"globalStyle": {
 		"backgroundTextStyle": "light",
@@ -30,7 +38,18 @@
 			"van-radio": "./static/vant-weapp/dist/radio/index",
 			"van-radio-group": "./static/vant-weapp/dist/radio-group/index",
 			"van-toast": "./static/vant-weapp/dist/toast/index",
-			"van-dialog": "./static/vant-weapp/dist/dialog/index"
+			"van-dialog": "./static/vant-weapp/dist/dialog/index",
+			"van-tab": "/static/vant-weapp/dist/tab/index",
+			"van-tabs": "/static/vant-weapp/dist/tabs/index",
+			"van-goods-action": "/static/vant-weapp/dist/goods-action/index",
+			"van-goods-action-icon": "/static/vant-weapp/dist/goods-action-icon/index",
+			"van-goods-action-button": "/static/vant-weapp/dist/goods-action-button/index",
+            "van-popup": "/static/vant-weapp/dist/popup/index",
+			"van-action-sheet": "/static/vant-weapp/dist/action-sheet/index",
+            "van-stepper": "/static/vant-weapp/dist/stepper/index",
+			"van-card": "/static/vant-weapp/dist/card/index",
+			"van-submit-bar": "/static/vant-weapp/dist/submit-bar/index",
+			"van-transition": "/static/vant-weapp/dist/transition/index"
 		}
 	}
 }

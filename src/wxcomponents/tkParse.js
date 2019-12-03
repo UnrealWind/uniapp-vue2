@@ -25,7 +25,7 @@ const init = {
         return ajax(url, opt, 'delete')
       }
     }
-    Vue.prototype.$tkParse = tkParse
+    Vue.prototype.$http = tkParse
   }
 }
 
