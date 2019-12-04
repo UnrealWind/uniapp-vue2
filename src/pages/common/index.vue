@@ -9,7 +9,7 @@
 
         <div class="section tc">
             <video id="myVideo" src="../../static/assets/img/snsdyvideodownload.mp4"></video>
-            <van-icon name="chat-o" class="iconComment" @click="showPopup"/>
+            <van-icon name="chat-o" class="iconComment font-24" @click="showPopup"/>
             <van-popup closeable
                        :show="isShow"
                        position="bottom"
@@ -18,14 +18,14 @@
                 <div class="commentTitle">评论</div>
                 <van-icon name="cross" class="iconCommon" @click="onClose"/>
                 <div class="contentNone">暂无评论，来抢沙发</div>
-                <!--                    <van-cell-group>-->
-                <!--                        <van-field-->
-                <!--                                value="{{ value }}"-->
-                <!--                                placeholder="说点好听的~"-->
-                <!--                                border="{{ false }}"-->
-                <!--                                bind:change="onValueChange"-->
-                <!--                        />-->
-                <!--                    </van-cell-group>-->
+                    <van-cell-group>
+                        <van-field
+                            :value="value"
+                            placeholder="说点好听的~"
+                            :border="false"
+                            bind:change="onValueChange"
+                        />
+                    </van-cell-group>
                 <div class="commentValue">说点好听的~</div>
             </van-popup>
 
@@ -33,12 +33,15 @@
                 <div class="title fix"> 视频相关商品 <van-icon name="cross" class="r" @click="fnCloseProductPop"/> </div>
                 <div class="shopProduct fix">
                     <div class="img l">
-                        <img src="../../static/assets/img/nav_img13.png" alt="">
+                        <span v-for="(data,index) in commidity.goodsStatics"
+                              :key="index">
+                            <img v-if="data.spuStaticType===0" :src="data.url" alt="">
+                        </span>
                     </div>
                     <div class="shopTitle r">
-                        <div class="stitle"> 来一份糖醋排骨 300g </div>
+                        <div class="stitle"> {{commidity.goodsName}} </div>
                         <div class="Price fix">
-                            <div class="money l">  ￥16 </div>
+                            <div class="money l">  ￥{{commidity.showPrice}} </div>
                             <div class="car r" @click="fnGoShopCart">
                                 <span> <van-icon name="cart-circle-o"/>  </span>
                             </div>
@@ -53,6 +56,7 @@
 <script>
 import Toast from '@/static/vant-weapp/dist/toast/toast'
 import config from '../../config'
+import commidity from '@/static/assets/json/comiList'
 
 export default {
   // 如果是单独想使用配置，在这里进行配置即可
@@ -66,10 +70,8 @@ export default {
       isShow: false,
       productRelevant:true,
       value: '',
-      // imgSrc: '/assets/img/notfound.jpg',
-      imgSrc: '',
-      cardList: [],
       hasLogin:false,
+      commidity:{}
     }
   },
   components: {
@@ -78,13 +80,15 @@ export default {
   methods: {
     async init () {
       try {
-        // await this.getUserInfo()
-      } catch (e) {
-        this.status = 'error';
-        throw e
-      }
-      this.status = 'success'
-    },
+          this.commidity = commidity.data[0]
+          console.log(this.commidity)
+            // await this.getUserInfo()
+          } catch (e) {
+            this.status = 'error';
+            throw e
+          }
+          this.status = 'success'
+      },
       back () {
           this.$route.back()
       },
@@ -98,17 +102,45 @@ export default {
         this.isShow = false;
       },
       fnGoShopCart(){
-        this.$route.push('/pages/common/shopCart')
+        !this.hasLogin?this.$route.push('/pages/common/authorization'):this.$route.push('/pages/common/shopCart')
       },
       fnCloseProductPop(){
         this.productRelevant = false;
+      },
+      async login () {
+          let that = this
+          wx.login({
+              success: async (code) => {
+                  wx.getUserInfo({
+                      success: async (userInfo) => {
+                          userInfo['code'] = code.code
+                          // 这里读取小程序的默认配置
+                          userInfo['wechatId'] = config.wechatId
+                          userInfo['wechatSecret'] = config.wechatSecret
+                          // 这里自动授权后正常进行后续操作
+                      }
+                  })
+              }
+          })
       }
   },
   created () {
 
   },
   onShow () {
-    this.init()
+      let that = this
+      wx.getSetting({
+          success (res) {
+              //  这个接口废弃了  if (res.authSetting['scope.userInfo']) {
+              if (res.nickName) {
+                  that.login()
+                  that.hasLogin = true
+              } else {
+
+              }
+          }
+      })
+      this.init()
   },
   async onLoad (options) {
     if (options) {
@@ -236,6 +268,9 @@ export default {
                 color: #fa4045;
             }
         }
+    }
+    .font-24 {
+        font-size:24px;
     }
 
 </style>

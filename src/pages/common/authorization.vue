@@ -1,17 +1,15 @@
 <template>
   <tk-container :status="status">
     <div slot="header">
-      <div slot="header">
-        <div @click="back" class="back" >
-          <tk-icon :size="18" :name="'arrow-left'"></tk-icon>
-        </div>
-        返回
+      <div @click="back" class="back" >
+        <tk-icon :size="18" :name="'arrow-left'"></tk-icon>
       </div>
+      授权
     </div>
     <div >
-      <div class="bind-card">x
-        <img src="http://moke-store.oss-cn-beijing.aliyuncs.com/d1679961-e492-495a-92e9-c66bdb2319ea.png"/>
-        <p>您需要授权登录才可以正常操作哦</p>
+      <div class="bind-card">
+        <img src=""/>
+        <p>您需要授权登录才可以进行购买</p>
       </div>
       <div class="btn-box">
 
@@ -24,49 +22,69 @@
 </template>
 
 <script>
-// 这个以后封组件,ps 这里必须使用相对路径
-// 授权这套以后封装，现在先都放在这
-import Toast from '@/static/vant-weapp/dist/toast/toast'
-import config from '../../config'
-export default {
-  data () {
-    return {
-      status: 'loading',
-      wrap: true,
-      userInfo: {}
-    }
-  },
-  components: {
+  // 这个以后封组件,ps 这里必须使用相对路径
+  // 授权这套以后封装，现在先都放在这
+  import Toast from '@/static/vant-weapp/dist/toast/toast'
+  import config from '../../config'
 
-  },
-  computed: {
-    authed () {
-      let auth = false
-      if (JSON.stringify(this.userInfo) !== '{}') {
-        auth = true
+  export default {
+    data () {
+      return {
+        status: 'loading',
+        wrap: true,
+        userInfo: {}
       }
-      return auth
-    }
-  },
-  methods: {
-    async init () {
-      this.status = 'success'
     },
-    back () {
-      this.$route.back()
+    components: {
+    },
+    computed: {
+      authed () {
+        let auth = false
+        if (JSON.stringify(this.userInfo) !== '{}') {
+          auth = true
+        }
+        return auth
+      }
+    },
+    methods: {
+      async init () {
+        this.status = 'success'
+      },
+      back () {
+        this.$route.back()
+      },
+      auth (e) {
+        if (e.mp.detail.userInfo) Toast.success('授权成功！')
+        this.userInfo = e.mp.detail.userInfo
+        this.login()
+      },
+      login () {
+        let that = this
+        wx.login({
+          success: async (code) => {
+            wx.getUserInfo({
+              success: async (userInfo) => {
+                console.log(userInfo)
+                userInfo['code'] = code.code
+                // 这里读取小程序的默认配置
+                userInfo['wechatId'] = config.wechatId
+                userInfo['wechatSecret'] = config.wechatSecret
+                // 这里根据获取到的信息进行用户绑定获取token
+              }
+            })
+          }
+        })
+      }
+    },
+    created () {
+    },
+    onShow () {
+      // 调用应用实例的方法获取全局数据
+      this.init()
+    },
+    onLoad () {
     }
-  },
-  created () {
-
-  },
-  onShow () {
-    // 调用应用实例的方法获取全局数据
-    this.init()
-  },
-  onLoad () {
-
   }
-}
 </script>
 
 <style lang=scss>

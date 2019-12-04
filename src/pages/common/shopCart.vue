@@ -408,36 +408,21 @@
                         <div class="shopTitle r">
                             <div class="money ">  ￥16 </div>
                             <div class="title">  剩余115件 <span> ( 每人限购15件 ) </span> </div>
-                            <div class="active">
-                                已选天蓝色； 1
-                            </div>
+<!--                            <div class="active" v-if="!specs.colorName || !specs.sizeName">请选择{{specs.colorName ? '':'颜色'}}{{specs.sizeName ? '':'尺寸'}}</div>-->
+<!--                            <div class="active" v-if="specs.colorName && specs.sizeName">已选 {{specs.colorName}}；{{specs.sizeName}}</div>-->
                         </div>
                     </div>
                 </div>
 
-                <div class="shopColor">
-                    <div class="title"> 颜色 </div>
-                    <span class="blue">
-                            <img src="../../static/assets/img/zonetu12.png" alt=""> <span class="shopColorName"> 天蓝色 </span>
-                        </span>
-                    <span class="blue blueActive">
-                            <span class="shopColorName"> 白色 </span>
-                        </span>
+                <div class="shopColor" v-if="listData.manageBaseData && listData.manageBaseData.length" v-for="(item,index) in listData.manageBaseData">
+                    <div class="title">{{item.baseName}}</div>
+                    <span class="blue" :class="list.colorActive === true? 'blueActive': ''" v-for="(list,num) in item.baseValue" :key="num"  @click="fnActiveClass(item,list,num)">
+                        <img src="../../static/assets/img/zonetu12.png" alt=""><span class="shopColorName">{{list.attributeValue}}</span>
+                    </span>
                 </div>
-
-                <div class="size">
-                    <div class="title"> 尺寸 </div>
-                    <span class="blue">
-                            <span class="shopColorName"> 1 </span>
-                        </span>
-                    <span class="blue">
-                            <span class="shopColorName"> 2 </span>
-                        </span>
-                </div>
-
                 <div class="number fix">
                     <span class="l"> 数量 </span>
-                    <span class="r"><van-stepper :value="1" input-width="40px" input-height="20px" button-size="12px" />  </span>
+                    <span class="r"><van-stepper :value="1" input-width="40px" input-height="20px" button-size="12px" /></span>
                 </div>
 
                 <div class="button" @click="fnGoOrder">
@@ -451,9 +436,7 @@
                 <van-goods-action-button type="warning" text="购买" @click="ProductSpecsClick" />
                 <van-goods-action-button type="danger" text="分享"  @click="shareClick" />
             </van-goods-action>
-
         </div>
-
         <van-popup
                 :show="sharePopup"
                 round
@@ -488,16 +471,20 @@
         data () {
             return {
                 status: 'loading',
-                wrap: true,
+                // wrap: true,
                 // imgSrc: '/assets/img/notfound.jpg',
-                imgSrc: '',
-                cardList: [],
-                hasLogin:false,
+                // cardList: [],
+                // hasLogin:false,
+                specs: {
+                    colorName:'',
+                    sizeName: ''
+                },
                 active: 1,
-                productShow: false,
-                sharePopup: false,
+                productShow: false,//商品规格弹窗
+                numActive: -1,
+                sharePopup: false,//分享弹窗
                 show: false,
-                listData:{}
+                listData: {}//商品详情
             }
         },
         components: {
@@ -507,26 +494,72 @@
             async init () {
                 try {
                     // await this.getUserInfo()
-                    this.fnArrData()
+                    this.mergeSizeArr();
+                    this.fnArrData();
                 } catch (e) {
                     this.status = 'error';
                     throw e
                 }
                 this.status = 'success'
             },
-            fnArrData(){
-                let attriArr = json.data.baseAttributes;
-                this.listData.colorAttribute = [];
-                this.listData.sizeAttribute = [];
-                attriArr.forEach(d => {
-                    if(d.attributeName === '颜色'){
-                        this.listData.colorAttribute.push(d);
-                    }
-                    if(d.attributeName === '尺码'){
-                        this.listData.sizeAttribute.push(d);
-                        console.log(this.listData)
+            fnActiveClass(_item,_list,_num){ //父级 本身 下标
+                this.$forceUpdate();
+                _item.baseValue.forEach(d =>{
+                    this.$set(d, 'colorActive', false)
+                });
+                this.$set(_item.baseValue[_num], 'colorActive', true)
+                // if (_who === 'color'){
+                //     if (this.colorActive === _index){
+                //         this.colorActive = -1;
+                //         this.specs.colorName = '';
+                //     } else {
+                //         this.colorActive = _index;
+                //         this.specs.colorName = _item.attributeValue;
+                //     }
+                // }
+            },
+            mergeSizeArr(){ //合并
+                let sizeArr = json.data.baseAttributes;//规格数据
+                this.listData.baseData = [];
+                let newSizeArr = [];
+                sizeArr.forEach(item => {
+                    let oItem = item;
+                    if (newSizeArr.length > 0){
+                        let filterArr = newSizeArr.filter(f=>{
+                            return f.attributeValue === oItem.attributeValue
+                        });
+                        if(filterArr.length > 0){
+                            newSizeArr.forEach(e=>{
+                                if( e.attributeValue === filterArr[0].attributeValue){
+                                    e.skuCode = filterArr[0].skuCode+'~'+oItem.skuCode
+                                }
+                            })
+                        }else{
+                            newSizeArr.push(oItem)
+                        }
+                    } else {
+                        newSizeArr.push(oItem)
                     }
                 });
+                this.listData.baseData = newSizeArr;
+                return this.listData.baseData
+            },
+            fnArrData(){
+                let attributesArr = this.listData.baseData;//规格数据
+                let newBaseArr = {};//新规格名数组
+                this.listData.manageBaseData = [];
+                attributesArr.forEach((item,i)=>{
+                    if (item.isSku === 1){
+                        if(newBaseArr[item.attributeName]){
+                            newBaseArr[item.attributeName].push(item)
+                        }else{
+                            newBaseArr[item.attributeName]=[item]
+                        }
+                    }
+                });
+                for(let baseName in newBaseArr){
+                    this.listData.manageBaseData.push({baseName,baseValue:newBaseArr[baseName]})
+                }
             },
             back () {
                 this.$route.back()
@@ -663,7 +696,7 @@
                 background: #f73e2c;
                 border-radius: 50px;
                 line-height: 20px;
-                padding: 0px 10px;
+                padding: 0 10px;
                 margin-top: 5px;
             }
             .capsule{
@@ -682,9 +715,9 @@
                 background: #ffd9ab;
                 z-index: 9;
                 top: 0;
-                left: 0px;
+                left: 0;
                 width: 20%;
-                border-radius: 50px 0px 0px 50px;
+                border-radius: 50px 0 0 50px;
             }
             .capsuleFont{
                 color: #552a0a;
@@ -703,7 +736,7 @@
 
     .sale-white{
         background: #fff;
-        padding: 10px 0px 10px;
+        padding: 10px 0 10px;
 
         .title{
             .l{
@@ -778,7 +811,7 @@
         margin-top: 10px;
         background: #fff;
         line-height: 20px;
-        padding: 10px 0px;
+        padding: 10px 0;
         color: #868686;
         font-size: 14px;
         .l{
@@ -806,7 +839,7 @@
         margin-top: 10px;
         background: #fff;
         line-height: 20px;
-        padding: 10px 0px 0px;
+        padding: 10px 0 0;
         color: #868686;
         font-size: 14px;
         margin-bottom: 10px;
@@ -816,7 +849,7 @@
             padding-bottom: 5px;
             margin-bottom: 5px;
             &:last-child{
-                border-bottom: 0px;
+                border-bottom: 0;
             }
         }
 
@@ -828,7 +861,6 @@
                 float: left;
             }
             span{
-                color: #313131;
                 display: inline-block;
                 width: 80%;
                 padding-left: 10px;
@@ -842,12 +874,12 @@
             line-height: 16px;
         }
         .font{
-            font-size: 0px;
+            font-size: 0;
         }
     }
 
     .sale-evaluate{
-        padding: 20px 0px 10px;
+        padding: 20px 0 10px;
         background: #fff;
         margin-bottom: 20px;
 
@@ -1220,13 +1252,20 @@
             top: 10px;
         }
         .blue{
-            background: #f7f8fa;
+            background-color: #f7f8fa;
             padding: 8px;
             margin-right: 10px;
+            border-radius: 4px;
             .shopColorName{
                 position: relative;
                 color: #323233;
                 padding-left: 5px;
+            }
+        }
+        .blueActive{
+            background-color: rgba(238, 10, 36, 0.1);
+            .shopColorName{
+                color: #ee0a24;
             }
         }
     }
@@ -1243,9 +1282,10 @@
             margin-bottom: 20px;
         }
         .blue{
-            background: #f7f8fa;
+            background-color: #f7f8fa;
             padding: 8px;
             margin-right: 10px;
+            border-radius: 4px;
             box-sizing: border-box;
             .shopColorName{
                 position: relative;
@@ -1253,10 +1293,10 @@
                 padding-left: 5px;
             }
         }
-        .blue.blueActive{
-            background: #e9001d;
+        .blueActive{
+            background-color: rgba(238, 10, 36, 0.1);
             .shopColorName{
-                color: #fff;
+                color: #ee0a24;
             }
         }
     }

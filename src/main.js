@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import App from './App'
+import store from './store'
+
 import tkParse from './wxcomponents/tkParse'
 import cloudAjax from './wxcomponents/cloudAjax'
 import route from './wxcomponents/route'
+import scan from './wxcomponents/tkScan'
+
 import TkFlex from './components/tkFlex'
 import TkContainer from './components/tkContainer'
 import TkIcon from './components/tkIcon'
 import TkImage from './components/tkImage'
 import TkCover from './components/tkCover'
-import scan from './wxcomponents/tkScan'
-import store from './store'
-
 
 Vue.use(tkParse)
 Vue.use(cloudAjax)

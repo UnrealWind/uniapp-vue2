@@ -1,17 +1,25 @@
 {
 	"pages": [
-      {
-          "path": "pages/common/index",
-          "style": {}
-      },
+		{
+			"path": "pages/common/user/logon",
+			"style": {}
+		},
+		{
+			"path": "pages/common/user/accountLogin",
+			"style": {}
+		},
+        {
+            "path": "pages/common/index",
+            "style": {}
+        },
 		{
 			"path": "pages/common/shopCart",
 			"style": {}
 		},
-	  {
+	    {
 		  "path": "pages/common/authorization",
 		  "style": {}
-	  },
+	    },
 		{
 			"path": "pages/common/confirm_order",
 			"style": {}
