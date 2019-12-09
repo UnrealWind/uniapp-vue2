@@ -64,11 +64,7 @@
           success: async (code) => {
             wx.getUserInfo({
               success: async (userInfo) => {
-                console.log(userInfo)
-                userInfo['code'] = code.code
-                // 这里读取小程序的默认配置
-                userInfo['wechatId'] = config.wechatId
-                userInfo['wechatSecret'] = config.wechatSecret
+                console.log(code,userInfo)
                 // 这里根据获取到的信息进行用户绑定获取token
               }
             })

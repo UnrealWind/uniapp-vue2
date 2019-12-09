@@ -1,6 +1,22 @@
 {
 	"pages": [
 		{
+			"path": "pages/common/index",
+			"style": {}
+		},
+		{
+			"path": "pages/common/confirm_order",
+			"style": {}
+		},
+		{
+			"path": "pages/common/shopCart",
+			"style": {}
+		},
+		{
+			"path": "pages/common/example",
+			"style": {}
+		},
+		{
 			"path": "pages/common/user/logon",
 			"style": {}
 		},
@@ -8,20 +24,55 @@
 			"path": "pages/common/user/accountLogin",
 			"style": {}
 		},
-        {
-            "path": "pages/common/index",
-            "style": {}
-        },
-		{
-			"path": "pages/common/shopCart",
-			"style": {}
-		},
 	    {
 		  "path": "pages/common/authorization",
 		  "style": {}
 	    },
 		{
-			"path": "pages/common/confirm_order",
+			"path": "pages/common/mine/mine",
+			"style": {}
+		},
+		{
+			"path": "pages/common/mine/set/set",
+			"style": {}
+		},
+		{
+			"path": "pages/common/mine/set/personaldata",
+			"style": {}
+		},
+		{
+			"path": "pages/common/cart/shopcar",
+			"style": {}
+		},
+		{
+			"path": "pages/common/cart/order_list",
+			"style": {}
+		},
+		{
+			"path": "pages/common/cart/order_details",
+			"style": {}
+		},    {
+			"path": "pages/common/index_app",
+			"style": {}
+		},
+		{
+			"path": "pages/common/searchPage",
+			"style": {}
+		},
+		{
+			"path": "pages/common/commodity-level-sec/dayNew",
+			"style": {}
+		},
+		{
+			"path": "pages/common/commodity-level-sec/mall",
+			"style": {}
+		},
+		{
+			"path": "pages/common/commodity-level-sec/seasonal",
+			"style": {}
+		},
+		{
+			"path": "pages/common/fruitList",
 			"style": {}
 		}
 	],
@@ -57,7 +108,9 @@
             "van-stepper": "/static/vant-weapp/dist/stepper/index",
 			"van-card": "/static/vant-weapp/dist/card/index",
 			"van-submit-bar": "/static/vant-weapp/dist/submit-bar/index",
-			"van-transition": "/static/vant-weapp/dist/transition/index"
+			"van-transition": "/static/vant-weapp/dist/transition/index",
+			"van-checkbox": "/static/vant-weapp/dist/checkbox/index",
+			"van-checkbox-group": "/static/vant-weapp/dist/checkbox-group/index"
 		}
 	}
 }

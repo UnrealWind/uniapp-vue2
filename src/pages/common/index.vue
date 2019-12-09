@@ -10,23 +10,37 @@
         <div class="section tc">
             <video id="myVideo" src="../../static/assets/img/snsdyvideodownload.mp4"></video>
             <van-icon name="chat-o" class="iconComment font-24" @click="showPopup"/>
-            <van-popup closeable
+            <van-popup class="popUp" closeable
                        :show="isShow"
                        position="bottom"
                        custom-style="height: 40%"
                        @close="onClose">
                 <div class="commentTitle">评论</div>
+                <ul class="commentList">
+                    <li>
+                        <span class="left-icon">
+                            <img src="">
+                        </span>
+                        <span class="right-info">
+                            <p>这是一条评论，这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论这是一条评论，这是一条评论这是一条评论</p>
+                        </span>
+                    </li>
+                </ul>
                 <van-icon name="cross" class="iconCommon" @click="onClose"/>
-                <div class="contentNone">暂无评论，来抢沙发</div>
-                    <van-cell-group>
-                        <van-field
-                            :value="value"
-                            placeholder="说点好听的~"
-                            :border="false"
-                            bind:change="onValueChange"
-                        />
-                    </van-cell-group>
-                <div class="commentValue">说点好听的~</div>
+                <!--<div class="contentNone">暂无评论，来抢沙发</div>-->
+                <van-cell-group class="popInput">
+                    <van-field
+                        value="value"
+                        center
+                        clearable
+                        placeholder="请输入消息"
+                        :border="false"
+                        use-button-slot
+                    >
+                        <van-button slot="button" size="small" type="primary">发送</van-button>
+                    </van-field>
+                </van-cell-group>
+                <!--<div class="commentValue">说点好听的~</div>-->
             </van-popup>
 
             <div class="shop" v-if="productRelevant">
@@ -49,7 +63,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </tk-container>
 </template>
@@ -70,7 +83,7 @@ export default {
       isShow: false,
       productRelevant:true,
       value: '',
-      hasLogin:false,
+      hasLogin:true,
       commidity:{}
     }
   },
@@ -181,7 +194,7 @@ export default {
         .iconComment{
             position: absolute;
             right: 9px;
-            top: 60%;
+            top: 70%;
             z-index: 100;
             color: #fff;
         }
@@ -271,6 +284,44 @@ export default {
     }
     .font-24 {
         font-size:24px;
+    }
+
+    .popUp {
+        .popInput {
+            position:fixed;
+            bottom: 0;
+            width:100%;
+        }
+        .commentList {
+            li{
+                width: 100%;
+                display: inline-block;
+                position: relative;
+                .left-icon {
+                    display: inline-block;
+                    border:1px solid #ccc;
+                    border-radius: 4px;
+                    width:30px;
+                    height:30px;
+                    margin:0 0 0 10px;
+                    position: absolute;
+                    left:0;
+                    img{
+                        width:30px;
+                        height:30px;
+                    }
+                }
+                .right-info {
+                    margin-left:15%;
+                    line-height: 1.7;
+                    display: inline-block;
+                    font-size:13px;
+                    height:30px;
+                    padding:0 10px;
+                    width:80%;
+                }
+            }
+        }
     }
 
 </style>

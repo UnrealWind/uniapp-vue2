@@ -8,335 +8,65 @@
         </div>
 
         <div class="van-swipe">
-            <img src="../../static/assets/img/lunbo1.png" alt="">
+            <span v-for="(opt,index) in listData.data.goodsStatics" :key="index">
+                <span v-if="opt.spuStaticType === 3">
+                  <img :src="opt.url" alt="">
+                </span>
+            </span>
         </div>
-
 
         <div class="sale">
             <div class="wp fix">
-
                 <div class="sale_l l">
-                    <div class="price"> ￥199~299 <h4> 1209~1379 </h4>  </div>
-                    <div class="end">
-                        <span> 距结束 </span> 4天 07:00：00
-                    </div>
+                    <div class="price"> ￥{{priceArea}} </div>
                 </div>
-
                 <div class="sale_r r">
                     <div class="price"> <em> 限时特卖 </em> </div>
-                    <div class="end">
-                        <span class="capsule"> </span>
-                        <span class="capsuleFont"> 已抢280<i> 仅剩1420</i> </span>
-                        <span class="capsuleBg"> </span>
-                    </div>
                 </div>
-
             </div>
         </div>
 
         <div class="sale-white">
             <div class="wp">
-
                 <div class="title fix">
-                    <span class="l">  凯司令秋梨膏2瓶凯司令秋梨膏2瓶凯司令秋梨膏2瓶凯司令秋梨膏2瓶凯司令秋梨膏 </span>
-                    <span class="r">  <van-icon name="like-o" /> 收藏 </span>
+                    <span class="l">  {{listData.data.goodsName}} </span>
                 </div>
-
-                <div class="min-title"> 凯司令秋梨膏2瓶 </div>
-
-                <div class="title_ul">
-                    <div class="li"> 好评率95% </div>
-                    <div class="li"> 一件也包邮 </div>
-                    <div class="li"> 月销1996件 </div>
-                </div>
-
-                <div class="sale-list fix" @click="$route.push('')">
-                    <div class="l">
-                        <em> 榜单 </em>
-                        <span> 凯司令秋梨膏2瓶 </span>
-                    </div>
-                    <span class="r"> 查看 <van-icon name="arrow" /> </span>
-                </div>
-
+                <div class="min-title"> {{listData.data.goodsDesc}} </div>
             </div>
         </div>
-
-        <div class="sale-securities" @click="$route.push('')">
+        <div class="sale-specs" @click="ProductSpecsClick">
             <div class="wp fix">
-
-                <div class="l">
-                    领劵
-                    <span> 满51减50 </span>
-                    <span> 满100减8 </span>
-                </div>
-
-                <div class="r">
-                    <span> 领劵 </span>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="sale-specs">
-            <div class="wp fix">
-
                 <div class="li fix">
                     <div class="l fix">
                         <i> 规格 </i>
                         <span> 请选择规格 </span>
                     </div>
-
                     <div class="r">
                         <van-icon name="ellipsis" />
                     </div>
                 </div>
-
-                <div class="li fix">
-                    <div class="l fix">
-                        <i>  送至 </i>
-                        <span> 姓名  具体地址 </span>
-                    </div>
-
-                    <div class="r">
-                        <van-icon name="ellipsis" />
-                    </div>
-                </div>
-
-                <div class="li fix">
-                    <div class="l fix">
-                        <i>  服务 </i>
-                        <span>  正品保证 | 店铺发货 | 支持7天无理由退货 | 邮费政策 | 增退货运费 </span>
-                    </div>
-
-                    <div class="r">
-                        <van-icon name="ellipsis" />
-                    </div>
-                </div>
-
-                <div class="li fix">
-                    <div class="l fix">
-                        <i class="font"> aaa  </i>
-                        <span> 30天价格保护， 降价无忧，尽享一站式服务 </span>
-                    </div>
-
-                    <div class="r">
-                        <van-icon name="ellipsis" />
-                    </div>
-                </div>
-
             </div>
         </div>
-
-        <div class="sale-evaluate">
-            <div class="wp fix">
-
-                <div class="evaluate fix">
-                    <div class="l">
-                        商品评价 <span>（124）</span>
-                    </div>
-                    <div class="r">
-                        <span> 好评率94% <van-icon name="arrow" /> </span>
-                    </div>
-                </div>
-
-                <div class="logo">
-                    <img src="../../static/assets/img/logo.jpg" alt="">
-                    <span> 小**爱 </span>
-                </div>
-
-                <div class="love">
-                    <span> <van-icon name="star" /> <van-icon name="star" /> <van-icon name="star" /> <van-icon name="star" /> <van-icon name="star" /> </span>
-                </div>
-
-                <div class="content">
-                    质量杠杠的，是真皮的，做工精细又美观，面料也很好，物流也很给力。颜色也很好。质量相当不错，非常完美，和图片.上描述的一-样，车险做工也很精细，款式很好看，摸起来有手感，款式好看,  背着很有气质
-                </div>
-
-                <div class="product fix">
-                    <div class="li">
-                        <img src="../../static/assets/img/zonetu12.png" alt="">
-                    </div>
-                    <div class="li">
-                        <img src="../../static/assets/img/zonetu12.png" alt="">
-                    </div>
-                    <div class="li">
-                        <img src="../../static/assets/img/zonetu12.png" alt="">
-                    </div>
-                    <div class="li">
-                        <img src="../../static/assets/img/zonetu12.png" alt="">
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div  class="sale-store">
-            <div class="wp">
-
-                <div class="logo fix">
-                    <div class="l">
-                        <img src="../../static/assets/img/logo.jpg" alt="">
-                        <span> 小爱旗舰店 </span>
-                    </div>
-                    <div class="r">
-                        进入店铺 <van-icon name="arrow" />
-                    </div>
-                </div>
-
-                <div class="pinpaitehui">
-                    <div class="swiper-container ">
-                        <div class="swiper-wrapper gwcLits fix">
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div  class="sale-store">
-            <div class="wp">
-
-                <div class="logo fix">
-                    <div class="l">
-                        <strong> 为你推荐</strong>
-                    </div>
-                </div>
-
-                <div class="pinpaitehui">
-                    <div class="swiper-container ">
-                        <div class="swiper-wrapper gwcLits fix">
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                            <div class="swiper-slide li">
-                                <a href="" class="img">
-                                    <img src="../../static/assets/img/zonetu12.png" alt="">
-                                    <p class="p2">特卖 </p>
-                                </a>
-                                <p class="p1">Touch Miss日系小浪漫与温暖羊毛针织拼接网纱百褶中长收腰连衣裙</p>
-                                <div class="p3 flex_betweenc"><p>¥85 <span>¥39</span></p></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
         <div class="sale-text-details">
             <div class="wp">
                 <div class="sale-title"> 图文详情 </div>
-
                 <van-tabs v-model="active">
                     <van-tab title="商品介绍 ">
-
                         <div class="sale_order">
-
-                            <div class="title">尊敬的用户您好，因为云集双十一-大促火热开展中，导致订单发货会有延迟，感谢您的支持与理解，常规订单发货时效如下 </div>
-
                             <div class="time">
-                                <div class="ul fix">
-                                    <div class="li"> 支付订单时间 </div>
-                                    <div class="li"> 发货时间 </div>
-                                </div>
-                                <div class="ul fix">
-                                    <div class="li"> 11.5 0:00一11.10 23:59:59期间 </div>
-                                    <div class="li"> 订单支付成功后48小时内 </div>
-                                </div>
-                                <div class="ul fix">
-                                    <div class="li"> 11.11 0:00一23:59:59期间</div>
-                                    <div class="li"> 订单支付成功后72小时内 </div>
-                                </div>
-                                <div class="ul fix">
-                                    <div class="li"> 11.12 0:00一23:59:59期间 </div>
-                                    <div class="li"> 订单支付成功后48小时内 </div>
+                                <div class="ul fix" v-for="(opt, index) in unSkuListData" :key="index">
+                                    <div class="li"> {{opt.attributeName}} </div>
+                                    <div class="li"> {{opt.attributeValue}} </div>
                                 </div>
                             </div>
-
                         </div>
-
-                        <div class="sale-material">
-                            <div class="ul fix">
-
-                            </div>
-                        </div>
-
-                        <div class="sale-specimg">
-                        </div>
-
+                        <span class="imgList" v-for="(opt,index) in listData.data.goodsStatics" :key="index">
+                            <span v-if="opt.spuStaticType === 2">
+                              <img class="image" :src="opt.url" alt="">
+                            </span>
+                        </span>
                     </van-tab>
                     <van-tab title="常见问题">
-
                         <div class="sale-question">
                             <div class="ques-title"> 购买须知 </div>
 
@@ -385,19 +115,17 @@
                         </div>
                     </van-tab>
                 </van-tabs>
-
-
             </div>
         </div>
 
         <div class="shopFooter">
 
             <van-popup
-                    :show="productShow"
-                    round
-                    closeable
-                    position="bottom"
-                    @close="onClose"
+                :show="productShow"
+                round
+                closeable
+                position="bottom"
+                @close="onClose"
             >
                 <div class="product_wrapper">
                     <van-icon name="cross" class="iconClose" @click="onClose"/>
@@ -406,23 +134,28 @@
                             <img src="../../static/assets/img/zonetu12.png" alt="">
                         </div>
                         <div class="shopTitle r">
-                            <div class="money ">  ￥16 </div>
-                            <div class="title">  剩余115件 <span> ( 每人限购15件 ) </span> </div>
+                            <div class="money ">  ￥{{targetSku.unitPrice*stepper}} </div>
+                            <div class="title">  剩余{{targetSku.stock}}件 </div>
 <!--                            <div class="active" v-if="!specs.colorName || !specs.sizeName">请选择{{specs.colorName ? '':'颜色'}}{{specs.sizeName ? '':'尺寸'}}</div>-->
 <!--                            <div class="active" v-if="specs.colorName && specs.sizeName">已选 {{specs.colorName}}；{{specs.sizeName}}</div>-->
                         </div>
                     </div>
                 </div>
 
-                <div class="shopColor" v-if="listData.manageBaseData && listData.manageBaseData.length" v-for="(item,index) in listData.manageBaseData">
-                    <div class="title">{{item.baseName}}</div>
-                    <span class="blue" :class="list.colorActive === true? 'blueActive': ''" v-for="(list,num) in item.baseValue" :key="num"  @click="fnActiveClass(item,list,num)">
-                        <img src="../../static/assets/img/zonetu12.png" alt=""><span class="shopColorName">{{list.attributeValue}}</span>
+                <div class="shopColor" v-for="(val, key, index) in skuListData" :key="key">
+                    <div class="title">{{key}}</div>
+                    <span  v-for="(targetVal, targetKey, idx) in val" :key="targetKey">
+                        <span v-if="!targetVal.unClick" class="blue" :class="targetVal.active? 'blueActive': ''" @click="choseSku(val,targetKey)">
+                            <span class="shopColorName">{{targetKey}}</span>
+                        </span>
+                        <span v-if="targetVal.unClick" class="blue" :class="targetVal.unClick? 'unClick': ''">
+                            <span class="shopColorName">{{targetKey}}</span>
+                        </span>
                     </span>
                 </div>
                 <div class="number fix">
                     <span class="l"> 数量 </span>
-                    <span class="r"><van-stepper :value="1" input-width="40px" input-height="20px" button-size="12px" /></span>
+                    <span class="r"><van-stepper :value="stepper" min="1" @change="changeStepper" :max="targetSku.stock" input-width="40px" input-height="20px" button-size="12px" /></span>
                 </div>
 
                 <div class="button" @click="fnGoOrder">
@@ -455,13 +188,14 @@
                 <div class="cancelButton" @click="onShareClose">取消</div>
             </div>
         </van-popup>
+        <van-toast id="van-toast" />
     </tk-container>
 </template>
 
 <script>
     import Toast from '@/static/vant-weapp/dist/toast/toast'
     import config from '../../config'
-    import json from '@/static/assets/json/json'
+    import listData from '@/static/assets/json/json'
 
     export default {
         // 如果是单独想使用配置，在这里进行配置即可
@@ -471,10 +205,6 @@
         data () {
             return {
                 status: 'loading',
-                // wrap: true,
-                // imgSrc: '/assets/img/notfound.jpg',
-                // cardList: [],
-                // hasLogin:false,
                 specs: {
                     colorName:'',
                     sizeName: ''
@@ -484,7 +214,16 @@
                 numActive: -1,
                 sharePopup: false,//分享弹窗
                 show: false,
-                listData: {}//商品详情
+                stepper:1,
+                priceArea:0,
+                listData: {}, //商品详情,
+                skuListData:{}, //skulist
+                unSkuListData:[], //非商品规格
+                targetSku:{
+                    unitPrice:0,
+                    stock:0,
+                    img:''
+                } //目标商品
             }
         },
         components: {
@@ -493,73 +232,78 @@
         methods: {
             async init () {
                 try {
-                    // await this.getUserInfo()
-                    this.mergeSizeArr();
-                    this.fnArrData();
+                    await this.getListData()
                 } catch (e) {
                     this.status = 'error';
                     throw e
                 }
                 this.status = 'success'
             },
-            fnActiveClass(_item,_list,_num){ //父级 本身 下标
-                this.$forceUpdate();
-                _item.baseValue.forEach(d =>{
-                    this.$set(d, 'colorActive', false)
-                });
-                this.$set(_item.baseValue[_num], 'colorActive', true)
-                // if (_who === 'color'){
-                //     if (this.colorActive === _index){
-                //         this.colorActive = -1;
-                //         this.specs.colorName = '';
-                //     } else {
-                //         this.colorActive = _index;
-                //         this.specs.colorName = _item.attributeValue;
-                //     }
-                // }
-            },
-            mergeSizeArr(){ //合并
-                let sizeArr = json.data.baseAttributes;//规格数据
-                this.listData.baseData = [];
-                let newSizeArr = [];
-                sizeArr.forEach(item => {
-                    let oItem = item;
-                    if (newSizeArr.length > 0){
-                        let filterArr = newSizeArr.filter(f=>{
-                            return f.attributeValue === oItem.attributeValue
-                        });
-                        if(filterArr.length > 0){
-                            newSizeArr.forEach(e=>{
-                                if( e.attributeValue === filterArr[0].attributeValue){
-                                    e.skuCode = filterArr[0].skuCode+'~'+oItem.skuCode
-                                }
-                            })
-                        }else{
-                            newSizeArr.push(oItem)
-                        }
-                    } else {
-                        newSizeArr.push(oItem)
+            async getListData(){
+                console.log(listData)
+                let skuListData = {}
+                let unSkuListData = []
+                this.listData = listData
+                this.listData.data.goodsSkuList.length > 1
+                    ? this.priceArea = this.listData.data.goodsSkuList.sort((a, b) => { return a.unitPrice - b.unitPrice })[0].unitPrice + ' ~ ' + this.listData.data.goodsSkuList.sort((a, b) => { return a.unitPrice - b.unitPrice })[this.listData.data.goodsSkuList.length - 1].unitPrice
+                    : this.priceArea = this.listData.data.goodsSkuList[0].unitPrice
+                listData.data.baseAttributes.forEach((n,i)=>{
+                    if(n.isSku === 1){
+                        !skuListData[n.attributeName]?
+                            (skuListData[n.attributeName] = {},skuListData[n.attributeName][n.attributeValue] = n):
+                            !skuListData[n.attributeName][n.attributeValue]?
+                                skuListData[n.attributeName][n.attributeValue] = n:
+                                skuListData[n.attributeName][n.attributeValue].skuCode += '~'+n.skuCode
+                    }else if(n.isSku === 0){
+                        unSkuListData.push(n)
                     }
-                });
-                this.listData.baseData = newSizeArr;
-                return this.listData.baseData
+                })
+                this.skuListData = skuListData
+                this.unSkuListData = unSkuListData
             },
-            fnArrData(){
-                let attributesArr = this.listData.baseData;//规格数据
-                let newBaseArr = {};//新规格名数组
-                this.listData.manageBaseData = [];
-                attributesArr.forEach((item,i)=>{
-                    if (item.isSku === 1){
-                        if(newBaseArr[item.attributeName]){
-                            newBaseArr[item.attributeName].push(item)
-                        }else{
-                            newBaseArr[item.attributeName]=[item]
+            choseSku(father,key){
+                !father[key]['active']?((()=>{
+                    for(let attr in father){
+                        this.$set(father[attr],'active',false)
+                    }
+                })(),this.$set(father[key],'active',true)) :this.$set(father[key],'active',false)
+
+                let check = {}
+                for(let attr in this.skuListData){
+                    check[attr] = false
+                    if(attr !== father[key].attributeName){
+                        for(let basic in this.skuListData[attr]){
+                            this.skuListData[attr][basic]['active']?check[attr] = this.skuListData[attr][basic].skuCode:''
+                            this.skuListData[attr][basic].skuCode.indexOf(father[key].skuCode)>-1 || father[key].skuCode.indexOf(this.skuListData[attr][basic].skuCode)>-1||!father[key]['active']?
+                                this.skuListData[attr][basic]['unClick'] = false:
+                                this.skuListData[attr][basic]['unClick'] = true
+                        }
+                    }else{
+                        for(let basic in this.skuListData[attr]){
+                            this.skuListData[attr][basic]['active']?check[attr] = this.skuListData[attr][basic].skuCode:''
                         }
                     }
-                });
-                for(let baseName in newBaseArr){
-                    this.listData.manageBaseData.push({baseName,baseValue:newBaseArr[baseName]})
                 }
+
+                let hasTarget = true
+                for(let attr in check){
+                    if(!check[attr]) hasTarget = false
+                    if(attr.indexOf('~')>-1) return
+                    this.listData.data.goodsSkuList.forEach((n,i)=>{
+                        check[attr] === n.skuCode?this.targetSku = n:''
+                    })
+                }
+                if(!hasTarget) this.targetSku = {
+                    unitPrice:0,
+                    stock:0,
+                    img:''
+                }
+                console.log(this.targetSku)
+
+            },
+            changeStepper(val){
+                console.log(val.detail)
+                this.stepper = val.detail
             },
             back () {
                 this.$route.back()
@@ -582,7 +326,48 @@
             shopButton(){
                 this.show=false;
             },
-            fnGoOrder(){
+            async fnGoOrder(){
+                let price
+                let activityResultId
+                let data = this.targetSku
+                let good = this.listData.data
+                if(!data.unitPrice) Toast.fail('请选择商品规格！')
+                if (good.activityResultList.length === 0) {
+                    price = data.unitPrice / 100 * this.stepper
+                    activityResultId = null
+                } else {
+                    switch (good.activityResultList[0].activityType) {
+                        case 0: price = data.unitPrice / 100 * this.stepper - JSON.parse(good.activityResultList[0].resultJson).drop; break
+                        case 1:
+                            if (JSON.parse(good.activityResultList[0].resultJson).full < data.unitPrice.price / 100 * this.stepper) {
+                                price = data.unitPrice / 100 * this.stepper - JSON.parse(good.activityResultList[0].resultJson).minus
+                            }
+                            break
+                        case 2:price = data.unitPrice / 100 * this.stepper * JSON.parse(good.activityResultList[0].resultJson).discount / 10; break
+                    }
+                    activityResultId = good.activityResultList[0].id
+                }
+
+                const goodsVoList = {
+                    'shopVos': [{
+                        shopCode: good.shopCode,
+                        shopName: good.shopName,
+                        goodsVos: []
+                    }],
+                    'orderType': 1, // 1是直接下单，2是购物车下单
+                    'total': price
+                }
+                goodsVoList.shopVos[0].goodsVos.push({
+                    'amount': this.stepper,
+                    'skuCode': data.skuCode,
+                    'activityResultId': activityResultId
+                })
+                const res = await this.$http.post('product/goods/createOrderInfo', goodsVoList)
+                res.code !== 500 ? (this.$store.commit('setTargetOrder', res.data), this.$router.push('/cart/confirm_order')) : Toast.fail(res.msg)
+                if (res.msg === '请先登录') {
+                    this.$route.push('/cart/confirm_order')
+                }
+
                 this.$route.push('/pages/common/confirm_order')
             }
         },
@@ -1064,7 +849,12 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
-
+        .imgList {
+            width:100%;
+            .image {
+                width:100%;
+            }
+        }
     }
 
     .van-tabs{
@@ -1267,6 +1057,10 @@
             .shopColorName{
                 color: #ee0a24;
             }
+        }
+        .unClick {
+            background: rgba(255,255,255,0.5);
+            color:#ccc;
         }
     }
 

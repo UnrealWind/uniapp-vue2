@@ -1,6 +1,5 @@
 <template>
     <tk-container :status="status" >
-
         <div slot="header">
             <div @click="back" class="back" >
                 <tk-icon :size="18" :name="'arrow-left'"></tk-icon>
@@ -8,30 +7,23 @@
             <div class="p"> 确认订单 </div>
         </div>
 
-
         <div class="orderRadio">
-<!--            <van-radio-group value="{{ radio }}" @change="changeAddress">-->
-<!--                <van-cell-group>-->
-<!--                    <van-cell-->
-<!--                            title="单选框 1"-->
-<!--                            clickable-->
-<!--                            data-name="1"-->
-<!--                            @click="onClickAddress(list)"-->
-<!--                            v-for="(list,index) in orderList" :key="index"-->
-<!--                    >-->
-<!--                        <van-radio name="list.num" slot="right-icon" />-->
-<!--                    </van-cell>-->
-<!--                </van-cell-group>-->
-<!--            </van-radio-group>-->
-
-<!--            <van-radio-group :value="radio" @change="onChange">-->
-<!--                <van-radio name="1" checked-color="#07c160">单选框 1</van-radio>-->
-<!--                <van-radio name="2" checked-color="#07c160">单选框 2</van-radio>-->
-<!--            </van-radio-group>-->
-
+            <van-radio-group :value="radio" @change="changeAddress">
+                <van-cell-group>
+                    <van-cell
+                            title="单选框 1"
+                            clickable
+                            data-name="1"
+                            @click="onClickAddress(list)"
+                            v-for="(list,index) in orderList" :key="index"
+                    >
+                        <van-radio name="list.num" slot="right-icon" />
+                    </van-cell>
+                </van-cell-group>
+            </van-radio-group>
         </div>
 
-        <p class="addAddress" @click="$router.push('/cart/address_list')"><van-icon name="add-o" /> 新增收货地址</p>
+        <!--<p class="addAddress" @click="$router.push('/cart/address_list')"><van-icon name="add-o" /> 新增收货地址</p>-->
         <div v-for="(goods, index) in orderList" :key="index" class="card_top">
             <div class="wp">
                 <div class="title fix"> <van-icon name="friends" /> 云妈妈公益 </div>
