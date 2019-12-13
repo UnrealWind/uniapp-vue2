@@ -65,6 +65,12 @@
             wx.getUserInfo({
               success: async (userInfo) => {
                 console.log(code,userInfo)
+                this.$http.get('/wx/wxLogin',{
+                  code:code.code,
+                  errMsg:userInfo.errMsg,
+                  encryptedData:userInfo.encryptedData,
+                  iv:userInfo.iv
+                })
                 // 这里根据获取到的信息进行用户绑定获取token
               }
             })

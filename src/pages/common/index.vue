@@ -83,7 +83,7 @@ export default {
       isShow: false,
       productRelevant:true,
       value: '',
-      hasLogin:true,
+      hasLogin:false,
       commidity:{}
     }
   },
@@ -94,7 +94,6 @@ export default {
     async init () {
       try {
           this.commidity = commidity.data[0]
-          console.log(this.commidity)
             // await this.getUserInfo()
           } catch (e) {
             this.status = 'error';
@@ -144,10 +143,10 @@ export default {
       let that = this
       wx.getSetting({
           success (res) {
-              //  这个接口废弃了  if (res.authSetting['scope.userInfo']) {
-              if (res.nickName) {
+              console.log(res,123123)
+              if (res.authSetting['scope.userInfo']) {
                   that.login()
-                  that.hasLogin = true
+                  // that.hasLogin = true
               } else {
 
               }
