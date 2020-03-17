@@ -9,7 +9,6 @@ import scan from './wxcomponents/FaScan'
 
 import FaFlex from './components/FaFlex'
 import FaContainer from './components/FaContainer'
-import FaIcon from './components/FaIcon'
 import FaCover from './components/FaCover'
 
 Vue.use(faParse)
@@ -22,7 +21,6 @@ Vue.prototype.$store = store
 
 Vue.component('FaFlex', FaFlex)
 Vue.component('FaContainer', FaContainer)
-Vue.component('FaIcon', FaIcon)
 Vue.component('FaCover', FaCover)
 
 const app = new Vue({
@@ -32,7 +30,6 @@ const app = new Vue({
   components: {
     'fa-flex': FaFlex,
     'fa-container': FaContainer,
-    'fa-icon': FaIcon,
     'fa-cover': FaCover
   }
 })
