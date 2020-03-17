@@ -2,45 +2,38 @@ import Vue from 'vue'
 import App from './App'
 import store from './store'
 
-import tkParse from './wxcomponents/tkParse'
+import faParse from './wxcomponents/FaParse'
 import cloudAjax from './wxcomponents/cloudAjax'
 import route from './wxcomponents/route'
-import scan from './wxcomponents/tkScan'
+import scan from './wxcomponents/FaScan'
 
-import FFlex from './components/tkFlex'
-import TkContainer from './components/tkContainer'
-import TkIcon from './components/tkIcon'
-import TkImage from './components/tkImage'
-import TkCover from './components/tkCover'
-import commodity from './components/commodity'
+import FaFlex from './components/FaFlex'
+import FaContainer from './components/FaContainer'
+import FaIcon from './components/FaIcon'
+import FaCover from './components/FaCover'
 
-Vue.use(tkParse)
+Vue.use(faParse)
 Vue.use(cloudAjax)
 Vue.use(route)
 Vue.use(scan)
 
 Vue.config.productionTip = false
-Vue.prototype.$serverUrl = 'https://unidemo.dcloud.net.cn';
 Vue.prototype.$store = store
 
-Vue.component('FFlex', FFlex)
-Vue.component('TkContainer', TkContainer)
-Vue.component('TkIcon', TkIcon)
-Vue.component('TkImage', TkImage)
-Vue.component('TkCover', TkCover)
-Vue.component('commodity',commodity)
+Vue.component('FaFlex', FaFlex)
+Vue.component('FaContainer', FaContainer)
+Vue.component('FaIcon', FaIcon)
+Vue.component('FaCover', FaCover)
 
 const app = new Vue({
   mpType: 'app',
   ...App,
   store,
   components: {
-    'tk-flex': FFlex,
-    'tk-container': TkContainer,
-    'tk-icon': TkIcon,
-    'tk-image': TkImage,
-    'tk-cover': TkCover,
-    'commodity':commodity
+    'fa-flex': FaFlex,
+    'fa-container': FaContainer,
+    'fa-icon': FaIcon,
+    'fa-cover': FaCover
   }
 })
 app.$mount()

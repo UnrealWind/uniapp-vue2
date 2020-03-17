@@ -1,19 +1,20 @@
-
 const init = {
-  install: (Vue) => {
+  install: Vue => {
     const route = {
-      push: async (url,query) => {
+      push: async (url, query) => {
         let num = 0
-        for(let i in query){
-          num===0?url+= `?${i}=${query[i]}`:url+= `&${i}=${query[i]}`
+        for (let i in query) {
+          num === 0
+            ? (url += `?${i}=${query[i]}`)
+            : (url += `&${i}=${query[i]}`)
           num++
         }
         uni.navigateTo({
-          url:url
+          url: url
         })
       },
       back: async () => {
-        uni.navigateBack ()
+        uni.navigateBack()
       }
     }
     Vue.prototype.$route = route
@@ -21,4 +22,3 @@ const init = {
 }
 
 export default init
-

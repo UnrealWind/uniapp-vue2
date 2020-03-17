@@ -1,116 +1,49 @@
 {
-	"pages": [
-		{
-			"path": "pages/common/index",
-			"style": {}
-		},
-		{
-			"path": "pages/common/confirm_order",
-			"style": {}
-		},
-		{
-			"path": "pages/common/shopCart",
-			"style": {}
-		},
-		{
-			"path": "pages/common/example",
-			"style": {}
-		},
-		{
-			"path": "pages/common/user/logon",
-			"style": {}
-		},
-		{
-			"path": "pages/common/user/accountLogin",
-			"style": {}
-		},
-	    {
-		  "path": "pages/common/authorization",
-		  "style": {}
-	    },
-		{
-			"path": "pages/common/mine/mine",
-			"style": {}
-		},
-		{
-			"path": "pages/common/mine/set/set",
-			"style": {}
-		},
-		{
-			"path": "pages/common/mine/set/personaldata",
-			"style": {}
-		},
-		{
-			"path": "pages/common/cart/shopcar",
-			"style": {}
-		},
-		{
-			"path": "pages/common/cart/order_list",
-			"style": {}
-		},
-		{
-			"path": "pages/common/cart/order_details",
-			"style": {}
-		},    {
-			"path": "pages/common/index_app",
-			"style": {}
-		},
-		{
-			"path": "pages/common/searchPage",
-			"style": {}
-		},
-		{
-			"path": "pages/common/commodity-level-sec/dayNew",
-			"style": {}
-		},
-		{
-			"path": "pages/common/commodity-level-sec/mall",
-			"style": {}
-		},
-		{
-			"path": "pages/common/commodity-level-sec/seasonal",
-			"style": {}
-		},
-		{
-			"path": "pages/common/fruitList",
-			"style": {}
-		}
-	],
-	"globalStyle": {
-		"backgroundTextStyle": "light",
-		"navigationBarBackgroundColor": "#fff",
-		"navigationBarTitleText": "WeChat",
-		"navigationBarTextStyle": "black",
-		"enablePullDownRefresh": false,
-		"navigationStyle": "custom",
-		"usingComponents": {
-			"van-button": "./static/vant-weapp/dist/button/index",
-			"van-row": "./static/vant-weapp/dist/row/index",
-			"van-col": "./static/vant-weapp/dist/col/index",
-			"van-loading": "./static/vant-weapp/dist/loading/index",
-			"van-icon": "./static/vant-weapp/dist/icon/index",
-			"van-tabbar": "./static/vant-weapp/dist/tabbar/index",
-			"van-tabbar-item": "./static/vant-weapp/dist/tabbar-item/index",
-			"van-cell": "./static/vant-weapp/dist/cell/index",
-			"van-cell-group": "./static/vant-weapp/dist/cell-group/index",
-			"van-field": "./static/vant-weapp/dist/field/index",
-			"van-radio": "./static/vant-weapp/dist/radio/index",
-			"van-radio-group": "./static/vant-weapp/dist/radio-group/index",
-			"van-toast": "./static/vant-weapp/dist/toast/index",
-			"van-dialog": "./static/vant-weapp/dist/dialog/index",
-			"van-tab": "/static/vant-weapp/dist/tab/index",
-			"van-tabs": "/static/vant-weapp/dist/tabs/index",
-			"van-goods-action": "/static/vant-weapp/dist/goods-action/index",
-			"van-goods-action-icon": "/static/vant-weapp/dist/goods-action-icon/index",
-			"van-goods-action-button": "/static/vant-weapp/dist/goods-action-button/index",
-            "van-popup": "/static/vant-weapp/dist/popup/index",
-			"van-action-sheet": "/static/vant-weapp/dist/action-sheet/index",
-            "van-stepper": "/static/vant-weapp/dist/stepper/index",
-			"van-card": "/static/vant-weapp/dist/card/index",
-			"van-submit-bar": "/static/vant-weapp/dist/submit-bar/index",
-			"van-transition": "/static/vant-weapp/dist/transition/index",
-			"van-checkbox": "/static/vant-weapp/dist/checkbox/index",
-			"van-checkbox-group": "/static/vant-weapp/dist/checkbox-group/index"
-		}
-	}
+  "pages": [
+    {
+      "path": "pages/common/index",
+      "style": {}
+    },
+    {
+      "path": "pages/common/authorization",
+      "style": {}
+    }
+  ],
+  "globalStyle": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false,
+    "navigationStyle": "custom",
+    "usingComponents": {
+      "van-button": "./static/vant-weapp/dist/button/index",
+      "van-row": "./static/vant-weapp/dist/row/index",
+      "van-col": "./static/vant-weapp/dist/col/index",
+      "van-loading": "./static/vant-weapp/dist/loading/index",
+      "van-icon": "./static/vant-weapp/dist/icon/index",
+      "van-tabbar": "./static/vant-weapp/dist/tabbar/index",
+      "van-tabbar-item": "./static/vant-weapp/dist/tabbar-item/index",
+      "van-cell": "./static/vant-weapp/dist/cell/index",
+      "van-cell-group": "./static/vant-weapp/dist/cell-group/index",
+      "van-field": "./static/vant-weapp/dist/field/index",
+      "van-radio": "./static/vant-weapp/dist/radio/index",
+      "van-radio-group": "./static/vant-weapp/dist/radio-group/index",
+      "van-toast": "./static/vant-weapp/dist/toast/index",
+      "van-dialog": "./static/vant-weapp/dist/dialog/index",
+      "van-tab": "/static/vant-weapp/dist/tab/index",
+      "van-tabs": "/static/vant-weapp/dist/tabs/index",
+      "van-goods-action": "/static/vant-weapp/dist/goods-action/index",
+      "van-goods-action-icon": "/static/vant-weapp/dist/goods-action-icon/index",
+      "van-goods-action-button": "/static/vant-weapp/dist/goods-action-button/index",
+      "van-popup": "/static/vant-weapp/dist/popup/index",
+      "van-action-sheet": "/static/vant-weapp/dist/action-sheet/index",
+      "van-stepper": "/static/vant-weapp/dist/stepper/index",
+      "van-card": "/static/vant-weapp/dist/card/index",
+      "van-submit-bar": "/static/vant-weapp/dist/submit-bar/index",
+      "van-transition": "/static/vant-weapp/dist/transition/index",
+      "van-checkbox": "/static/vant-weapp/dist/checkbox/index",
+      "van-checkbox-group": "/static/vant-weapp/dist/checkbox-group/index"
+    }
+  }
 }
