@@ -50,7 +50,7 @@
     "@vue/cli-plugin-babel": "3.5.1",
     "@vue/cli-service": "^3.11.0",
     "babel-plugin-import": "^1.12.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "postcss-comment": "^2.0.0",
     "sass-loader": "^7.3.1",
     "vant-weapp": "^0.5.20",
