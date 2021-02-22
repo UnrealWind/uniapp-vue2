@@ -11,9 +11,9 @@
       <tk-icon :name="'warning-o'">warning-o</tk-icon>
       <p>加载错误</p>
       <van-button @click="reload"
-                  type="default"
-                  size="normal"
-                  btnClass="mb15">重新加载</van-button>
+        type="default"
+        size="normal"
+        btnClass="mb15">重新加载</van-button>
     </div>
     <div v-if="status === 'empty'"
          class="cover empty">
@@ -34,7 +34,9 @@
           v-if="status === 'success'"
           :style="customMain">
       <div class="scroll">
-        <slot></slot>
+        <slot>
+        </slot>
+        <div :style="customSafeArea"></div>
       </div>
       <slot name="body-cover"
             class="body-cover"> </slot>
@@ -44,13 +46,13 @@
     <footer v-if="tabbar"
             class="footer">
       <van-tabbar :active="active"
-                  bind:change="onChange">
+                  @change="">
+<!--        <van-tabbar-item name="home"-->
+<!--                         icon="home-o">首页</van-tabbar-item>-->
         <van-tabbar-item name="home"
-                         icon="home-o">首页</van-tabbar-item>
-        <van-tabbar-item name="friends"
-                         icon="friends-o">其他</van-tabbar-item>
-        <van-tabbar-item name="setting"
-                         icon="setting-o">设置</van-tabbar-item>
+                @click="goRecordList"     icon="home-o">工单</van-tabbar-item>
+        <van-tabbar-item name="mine"
+                @click="goMine"     icon="user-circle-o">我的</van-tabbar-item>
       </van-tabbar>
       <slot name="footer"> </slot>
     </footer>
@@ -93,15 +95,19 @@ export default {
       // 安卓刘海屏未测试，ios刘海屏未测试，ios未测试
       let sysinfo = wx.getSystemInfoSync()
       let height =
-        wx.getMenuButtonBoundingClientRect().top -
         wx.getSystemInfoSync().statusBarHeight
       this.height = height
-      sysinfo.system.indexOf('iOS') > -1 ? (height += 25) : (height += 30)
+      sysinfo.system.indexOf('iOS') > -1 ? (this.height += 4) : (this.height += 8)
       if (status === 'success') this.status = 'success'
-      return `padding:${height}px 10px 15px 10px;`
+      return `padding:${this.height}px 10px 15px 10px;`
     },
     customMain () {
-      return `margin-top:${this.height + 70}px`
+      return `margin-top:${this.height + 46}px;`
+    },
+    customSafeArea (){
+      let safearea = uni.getSystemInfoSync().safeArea.bottom
+      let total = uni.getSystemInfoSync().windowHeight
+      return `height:${total - safearea }px;`
     }
   },
   methods: {
@@ -110,6 +116,15 @@ export default {
       let pages = getCurrentPages() // 获取页面数组
       let curPage = pages[pages.length - 1] // 获取当前页
       curPage.onShow() // 手动调用生命周期函数
+    },
+    goRecordList(){
+      let pages = getCurrentPages()
+      pages[pages.length - 2].route === "pages/view/recordList"?this.$route.back():this.$route.push('/pages/view/recordList')
+    },
+    goMine(){
+      let pages = getCurrentPages()
+      pages[pages.length - 2].route === "pages/view/mine"?this.$route.back():this.$route.push('/pages/view/mine')
+
     }
   }
 }
@@ -119,7 +134,7 @@ export default {
 page {
   width: 100%;
   height: 100%;
-  background: #eee;
+  background: #efefef;
 }
 .cover-translucent {
   width: 100%;
@@ -154,12 +169,17 @@ page {
   top: 0;
   width: 100%;
   z-index: 100;
+  text-align: center;
+  > view {
+    width: 90%;
+  }
   van-icon {
     position: relative;
     top: 3px;
   }
   view {
     display: inline-block;
+    float: left;
   }
 }
 
@@ -179,7 +199,7 @@ page {
   background: #fff;
   color: #000;
   line-height: 50px;
-  flex: 0 0 50px;
+  z-index: 0;
 }
 
 .cover {
@@ -213,4 +233,6 @@ page {
     top: 20px;
   }
 }
+
+
 </style>
