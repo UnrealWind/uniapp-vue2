@@ -48,7 +48,7 @@
     "@types/html5plus": "*",
     "@types/uni-app": "^1.4.0",
     "@vue/cli-plugin-babel": "3.5.1",
-    "@vue/cli-service": "^3.11.0",
+    "@vue/cli-service": "^5.0.8",
     "babel-plugin-import": "^1.12.1",
     "moment": "^2.29.1",
     "node-sass": "^4.12.0",
